@@ -3,7 +3,7 @@ package org.usfirst.frc.team698.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team698.robot.RobotMap;
-import org.usfirst.frc.team698.robot.commands.DriveForward;
+import org.usfirst.frc.team698.robot.commands.JoystickDrive;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -28,7 +28,7 @@ public class DriveSubsystem extends Subsystem {
 	private static final Encoder driveLeftEncoder = new Encoder(RobotMap.driveLeftEncoderChannelA, RobotMap.driveLeftEncoderChannelB, leftEncoderInverted);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new DriveForward());
+        setDefaultCommand(new JoystickDrive());
     }
     /**
 	 * Set the speed of the two right motors
