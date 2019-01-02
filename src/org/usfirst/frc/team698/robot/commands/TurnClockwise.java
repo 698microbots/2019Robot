@@ -7,10 +7,10 @@ import org.usfirst.frc.team698.robot.subsystems.DriveSubsystem;
 /**
  *
  */
-public class TurnRight extends Command {
+public class TurnClockwise extends Command {
 
 
-    public TurnRight() {
+    public TurnClockwise() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drive);
