@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode; 
 /**
  *
  */
@@ -34,8 +35,8 @@ public class Drive_subsystem extends Subsystem {
 	public void setRightSpeed(double speed) {
 		if(speed<-1) speed =-1;
 		if(speed>1) speed=1;
-		driveRightRearMotor.set(speed);
-		driveRightFrontMotor.set(speed);
+		driveRightRearMotor.set(ControlMode.PercentOutput,speed);
+		driveRightFrontMotor.set(ControlMode.PercentOutput,speed);
 	}
 	
 	/**
@@ -45,8 +46,8 @@ public class Drive_subsystem extends Subsystem {
 	public void setLeftSpeed(double speed) {
 		if(speed<-1) speed =-1;
 		if(speed>1) speed=1;
-		driveLeftRearMotor.set(speed);
-		driveLeftFrontMotor.set(speed);
+		driveLeftRearMotor.set(ControlMode.PercentOutput,speed);
+		driveLeftFrontMotor.set(ControlMode.PercentOutput,speed);
 	}
 }
 
