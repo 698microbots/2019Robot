@@ -3,6 +3,7 @@ package org.usfirst.frc.team698.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team698.robot.RobotMap;
+import org.usfirst.frc.team698.robot.commands.DriveForward;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -12,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 /**
  *
  */
-public class Drive_subsystem extends Subsystem {
+public class DriveSubsystem extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -21,12 +22,13 @@ public class Drive_subsystem extends Subsystem {
 	private static final TalonSRX driveLeftRearMotor = new TalonSRX(RobotMap.driveLeftRearMotor);
 	private static final TalonSRX driveLeftFrontMotor = new TalonSRX(RobotMap.driveLeftFrontMotor);
 	
+	private final static boolean rightEncoderInverted = false;
+	private final static boolean leftEncoderInverted = false;
 	private static final Encoder driveRightEncoder = new Encoder(RobotMap.driveRightEncoderChannelA, RobotMap.driveRightEncoderChannelB, rightEncoderInverted);
 	private static final Encoder driveLeftEncoder = new Encoder(RobotMap.driveLeftEncoderChannelA, RobotMap.driveLeftEncoderChannelB, leftEncoderInverted);
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DriveForward());
     }
     /**
 	 * Set the speed of the two right motors

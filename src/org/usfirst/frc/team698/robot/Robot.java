@@ -13,7 +13,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team698.robot.commands.ExampleCommand;
+import org.usfirst.frc.team698.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team698.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,6 +27,9 @@ import org.usfirst.frc.team698.robot.subsystems.ExampleSubsystem;
 public class Robot extends TimedRobot {
 	public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
 	public static OI m_oi;
+	public static DriveSubsystem drive = new DriveSubsystem();
+	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro(RobotMap.gyroPort);
+
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
