@@ -1,10 +1,13 @@
 package org.usfirst.frc.team698.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team698.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 /**
  *
  */
@@ -12,10 +15,10 @@ public class Drive_subsystem extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private static final Victor driveRightRearMotor = new Victor(RobotMap.driveRightRearMotor);
-	private static final Victor driveRightFrontMotor = new Victor(RobotMap.driveRightFrontMotor);
-	private static final Victor driveLeftRearMotor = new Victor(RobotMap.driveLeftRearMotor);
-	private static final Victor driveLeftFrontMotor = new Victor(RobotMap.driveLeftFrontMotor);
+	private static final TalonSRX driveRightRearMotor = new TalonSRX(RobotMap.driveRightRearMotor);
+	private static final TalonSRX driveRightFrontMotor = new TalonSRX(RobotMap.driveRightFrontMotor);
+	private static final TalonSRX driveLeftRearMotor = new TalonSRX(RobotMap.driveLeftRearMotor);
+	private static final TalonSRX driveLeftFrontMotor = new TalonSRX(RobotMap.driveLeftFrontMotor);
 	
 	private static final Encoder driveRightEncoder = new Encoder(RobotMap.driveRightEncoderChannelA, RobotMap.driveRightEncoderChannelB, rightEncoderInverted);
 	private static final Encoder driveLeftEncoder = new Encoder(RobotMap.driveLeftEncoderChannelA, RobotMap.driveLeftEncoderChannelB, leftEncoderInverted);
