@@ -18,7 +18,7 @@ public class JoystickDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.gyro.reset();
+    	//Robot.gyro.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,9 +27,10 @@ public class JoystickDrive extends Command {
     	{
     		Robot.drive.setRightSpeed(-Robot.m_oi.right.getX());
         	Robot.drive.setLeftSpeed(Robot.m_oi.right.getX());
-        	Robot.gyro.reset();
+        	//Robot.gyro.reset();
     	}
-		double angle = Robot.gyro.getAngle();
+		//double angle = Robot.gyro.getAngle();
+    	double angle = 0;
     	if(Robot.m_oi.left.getY() >= 0)
     	{
     		Robot.drive.setRightSpeed(Robot.m_oi.left.getY() - angle*kp);
