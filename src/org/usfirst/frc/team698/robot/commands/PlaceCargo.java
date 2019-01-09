@@ -1,30 +1,37 @@
 package org.usfirst.frc.team698.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
+
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team698.robot.Robot;
-import org.usfirst.frc.team698.robot.subsystems.HatchIntakeSubsystem;
+import org.usfirst.frc.team698.robot.subsystems.CargoIntakeSubsystem;
+
 /**
  *
  */
-public class PlaceHatch extends Command {
+public class PlaceCargo extends Command {
 
-    public PlaceHatch()
-    {
+	private static boolean hitormiss;
+	
+    public PlaceCargo(boolean hitormiss) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.hatchIntake);
+    	requires(Robot.cargoIntake);
+    	this.hitormiss = hitormiss;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	Robot.hatchIntake.extendPiston();
+    	if(hitormiss)
+    		Robot.cargoIntake.shoot();
+    	else
+    		Robot.cargoIntake.intake();
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Timer.delay(.5);
+    protected void execute() 
+    {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -34,7 +41,6 @@ public class PlaceHatch extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.hatchIntake.retractPiston();
     }
 
     // Called when another command which requires one or more of the same

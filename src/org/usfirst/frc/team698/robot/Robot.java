@@ -8,12 +8,13 @@
 package org.usfirst.frc.team698.robot;
 
 import org.usfirst.frc.team698.robot.commands.ExampleCommand;
+import org.usfirst.frc.team698.robot.subsystems.CargoIntakeSubsystem;
 import org.usfirst.frc.team698.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team698.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team698.robot.subsystems.HatchIntakeSubsystem;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -33,7 +34,9 @@ public class Robot extends TimedRobot {
 	public static DriveSubsystem drive = new DriveSubsystem();
 	public static HatchIntakeSubsystem hatchIntake = new HatchIntakeSubsystem();
 	public static Compressor c = new Compressor(RobotMap.PCMNodeID);
-	public static ADXRS450_Gyro gyro = new ADXRS450_Gyro(RobotMap.gyroPort);
+	public static Relay r = new Relay(0);
+	public static CargoIntakeSubsystem cargoIntake = new CargoIntakeSubsystem();
+	//public static ADXRS450_Gyro gyro = new ADXRS450_Gyro(RobotMap.gyroPort);
 
 
 	Command m_autonomousCommand;
@@ -48,7 +51,6 @@ public class Robot extends TimedRobot {
 		m_oi = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		c.setClosedLoopControl(true);
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
@@ -119,6 +121,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		r.set(Relay.Value.kForward);
 		Scheduler.getInstance().run();
 	}
 
@@ -127,5 +130,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		c.setClosedLoopControl(true);
 	}
 }

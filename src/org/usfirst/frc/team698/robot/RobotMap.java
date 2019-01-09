@@ -28,5 +28,6 @@ public class RobotMap {
 	public static final int driveRightEncoderChannelB = 2; // TODO: CHANGE!
 	public static final int driveLeftEncoderChannelA = 1; // TODO: CHANGE!
 	public static final int driveLeftEncoderChannelB = 0; // TODO: CHANGE!
-	public static final int HatchSolenoidPort = 0;
+	public static final int HatchSolenoidForwardPort = 0;
+	public static final int HatchSolenoidReturnPort = 1;
 }
