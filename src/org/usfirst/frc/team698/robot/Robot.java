@@ -121,6 +121,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		c.setClosedLoopControl(true);
 		r.set(Relay.Value.kForward);
 		Scheduler.getInstance().run();
 	}

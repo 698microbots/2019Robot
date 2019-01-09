@@ -21,6 +21,8 @@ public class RobotMap {
 	public static int 	driveLeftRearMotor 		= 2;
 	public static int 	driveRightFrontMotor	= 3;
 	public static int 	driveLeftFrontMotor 	= 4;
+	public static int 	cargoIntakeLeftMotor	= 9;
+	public static int 	cargoIntakeRightMotor 	= 8;
 	public static int 	PCMNodeID				= 0;
 	public static Port	gyroPort;
 	
