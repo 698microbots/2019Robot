@@ -34,13 +34,13 @@ public class AlignToTarget extends Command {
     	x = tx.getDouble(0.0);
     	if(x >= 0)
     	{
-    		Robot.drive.setRightSpeed(sp - x*kp);
-        	Robot.drive.setLeftSpeed(sp + x*kp);
+    		Robot.drive.setRightSpeed(Math.max(sp - x*kp,0));
+        	Robot.drive.setLeftSpeed(Math.min(sp + x*kp, sp));
     	}
     	else
     	{
-    		Robot.drive.setRightSpeed(sp + x*kp);
-        	Robot.drive.setLeftSpeed(sp - x*kp);
+    		Robot.drive.setLeftSpeed(Math.max(sp - x*kp,0));
+        	Robot.drive.setRightSpeed(Math.min(sp + x*kp, sp));
     	}
     }
 
