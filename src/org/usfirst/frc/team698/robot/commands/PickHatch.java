@@ -1,25 +1,23 @@
 package org.usfirst.frc.team698.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team698.robot.Robot;
-import org.usfirst.frc.team698.robot.subsystems.HatchIntakeSubsystem;
+
+import edu.wpi.first.wpilibj.command.Command;
+
 /**
  *
  */
-public class PlaceHatch extends Command {
+public class PickHatch extends Command {
 
-    public PlaceHatch()
-    {
+    public PickHatch() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.hatchIntake);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() 
-    {
-    	Robot.hatchIntake.retractPiston();
+    protected void initialize() {
+    	Robot.hatchIntake.extendPiston();
     }
 
     // Called repeatedly when this Command is scheduled to run
