@@ -1,37 +1,30 @@
 package org.usfirst.frc.team698.robot.commands;
 
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team698.robot.Robot;
-import org.usfirst.frc.team698.robot.subsystems.CargoIntakeSubsystem;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class PlaceCargo extends Command {
+public class Off extends Command {
 
-	private static boolean hitormiss;
-	
-    public PlaceCargo(boolean hitormiss) {
+    public Off() 
+    {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.cargoIntake);
-    	this.hitormiss = hitormiss;
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() 
-    {
-    	if(hitormiss)
-    		Robot.cargoIntake.shoot();
-    	else
-    		Robot.cargoIntake.intake();
+    protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	
+    	Robot.cargoIntake.off();
     }
 
     // Make this return true when this Command no longer needs to run execute()

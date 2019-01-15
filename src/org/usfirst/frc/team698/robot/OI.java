@@ -8,7 +8,9 @@
 package org.usfirst.frc.team698.robot;
 
 import org.usfirst.frc.team698.robot.commands.AlignToTarget;
-import org.usfirst.frc.team698.robot.commands.PlaceCargo;
+import org.usfirst.frc.team698.robot.commands.IntakeCargo;
+import org.usfirst.frc.team698.robot.commands.Off;
+import org.usfirst.frc.team698.robot.commands.ShootCargo;
 import org.usfirst.frc.team698.robot.commands.PlaceHatch;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -32,7 +34,9 @@ public class OI {
 	{
 		leftTrig.whenPressed(new PlaceHatch());
 		rightTrig.whenPressed(new AlignToTarget());
-		leftButton.whenPressed(new PlaceCargo(false));
-		rightButton.whenPressed(new PlaceCargo(true));
+		leftButton.whenPressed(new IntakeCargo());
+		leftButton.whenReleased(new Off());
+		rightButton.whenPressed(new ShootCargo());
+		rightButton.whenReleased(new Off());
 	}
 }

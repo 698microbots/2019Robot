@@ -20,14 +20,20 @@ public class CargoIntakeSubsystem extends Subsystem {
     
     public void intake()
     {
-    	leftmotor.set(-1.0);
-    	rightmotor.set(1.0);
+    	leftmotor.set(-0.3);
+    	rightmotor.set(0.3);
     }
     
     public void shoot()
     {
-    	leftmotor.set(1.0);
-    	rightmotor.set(-1.0);
+    	leftmotor.set(0.3);
+    	rightmotor.set(-0.3);
+    }
+    
+    public void off()
+    {
+    	leftmotor.set(0.0);
+    	rightmotor.set(0.0);
     }
 }
 

@@ -1,17 +1,12 @@
 package org.usfirst.frc.team698.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-
 import org.usfirst.frc.team698.robot.RobotMap;
 import org.usfirst.frc.team698.robot.commands.JoystickDrive;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
-
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.ControlMode; 
+import edu.wpi.first.wpilibj.command.Subsystem; 
 /**
  *
  */
@@ -19,10 +14,10 @@ public class DriveSubsystem extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private static final VictorSP driveRightRearMotor = new VictorSP(RobotMap.driveRightRearMotor);
-	private static final VictorSP driveRightFrontMotor = new VictorSP(RobotMap.driveRightFrontMotor);
-	private static final VictorSP driveLeftRearMotor = new VictorSP(RobotMap.driveLeftRearMotor);
-	private static final VictorSP driveLeftFrontMotor = new VictorSP(RobotMap.driveLeftFrontMotor);
+	private static final Spark driveRightRearMotor = new Spark(RobotMap.driveRightRearMotor);
+	private static final Spark driveRightFrontMotor = new Spark(RobotMap.driveRightFrontMotor);
+	private static final Spark driveLeftRearMotor = new Spark(RobotMap.driveLeftRearMotor);
+	private static final Spark driveLeftFrontMotor = new Spark(RobotMap.driveLeftFrontMotor);
 	
 	private final static boolean rightEncoderInverted = false;
 	private final static boolean leftEncoderInverted = false;
