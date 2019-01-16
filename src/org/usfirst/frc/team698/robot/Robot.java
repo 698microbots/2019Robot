@@ -14,10 +14,10 @@ import org.usfirst.frc.team698.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team698.robot.subsystems.HatchIntakeSubsystem;
 
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -56,6 +56,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		NetworkTableEntry light_state = limelight.getEntry("ledMode");
+		light_state.setNumber(1);
 	}
 
 	/**
@@ -127,6 +129,9 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		c.setClosedLoopControl(true);
 		r.set(Relay.Value.kForward);
+		SmartDashboard.putNumber("tx", Robot.limelight.getEntry("tx").getDouble(0.0));
+		SmartDashboard.putNumber("ty", Robot.limelight.getEntry("ty").getDouble(0.0));
+		SmartDashboard.putNumber("ta", Robot.limelight.getEntry("ta").getDouble(0.0));
 		Scheduler.getInstance().run();
 	}
 
