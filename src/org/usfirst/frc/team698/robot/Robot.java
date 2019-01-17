@@ -35,10 +35,10 @@ public class Robot extends TimedRobot {
 	public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
 	public static OI m_oi;
 	public static DriveSubsystem drive = new DriveSubsystem();
-	public static HatchIntakeSubsystem hatchIntake = new HatchIntakeSubsystem();
-	public static Compressor c = new Compressor(RobotMap.PCMNodeID);
+	//public static HatchIntakeSubsystem hatchIntake = new HatchIntakeSubsystem();
+	//public static Compressor c = new Compressor(RobotMap.PCMNodeID);
 	public static Relay r = new Relay(0);
-	public static CargoIntakeSubsystem cargoIntake = new CargoIntakeSubsystem();
+	//public static CargoIntakeSubsystem cargoIntake = new CargoIntakeSubsystem();
 	public static NetworkTable limelight = NetworkTableInstance.getDefault().getTable("limelight");
 	//public static ADXRS450_Gyro gyro = new ADXRS450_Gyro(RobotMap.gyroPort);
 
@@ -127,7 +127,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		c.setClosedLoopControl(true);
+		//c.setClosedLoopControl(true);
 		r.set(Relay.Value.kForward);
 		SmartDashboard.putNumber("tx", Robot.limelight.getEntry("tx").getDouble(0.0));
 		SmartDashboard.putNumber("ty", Robot.limelight.getEntry("ty").getDouble(0.0));

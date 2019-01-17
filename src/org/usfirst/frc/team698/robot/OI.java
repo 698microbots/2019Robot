@@ -32,11 +32,11 @@ public class OI {
 	
 	public OI()
 	{
-		leftTrig.whenPressed(new PlaceHatch());
+		//leftTrig.whenPressed(new PlaceHatch());
 		rightTrig.whenPressed(new AlignToTarget());
-		leftButton.whenPressed(new IntakeCargo());
-		leftButton.whenReleased(new Off());
-		rightButton.whenPressed(new ShootCargo());
-		rightButton.whenReleased(new Off());
+		//leftButton.whenPressed(new IntakeCargo());
+		//leftButton.whenReleased(new Off());
+		//rightButton.whenPressed(new ShootCargo());
+		//rightButton.whenReleased(new Off());
 	}
 }
