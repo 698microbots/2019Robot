@@ -14,10 +14,10 @@ public class AlignToTarget extends Command {
 
 	NetworkTableEntry tx,ty,ta;
 	double x,y,a;
-	double kp = 0.03;
+	double kp = 0.02;
 	double thresh = 5;
-	double sp_initial = .3;
-	double sp = .3;
+	double sp_initial = .1;
+	double sp = 0.4;
 	NetworkTableEntry light_state = Robot.limelight.getEntry("ledMode");
     public AlignToTarget() {
         // Use requires() here to declare subsystem dependencies
@@ -46,19 +46,21 @@ public class AlignToTarget extends Command {
     	
     	if(x < 0)
     	{
-    		Robot.drive.setRightSpeed(Math.max((sp - x*kp)/(a),0));
-        	Robot.drive.setLeftSpeed(Math.min((sp + x*kp)/(a), .5));
+    		x = Math.abs(x);
+    		Robot.drive.setRightSpeed(Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
+        	Robot.drive.setLeftSpeed(Math.min((sp + x*kp)/(a), .6));
         	
-        	SmartDashboard.putNumber("right speed",Math.max((sp - x*kp)/(a),0));
+        	SmartDashboard.putNumber("right speed",Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
         	SmartDashboard.putNumber("left speed",Math.min((sp + x*kp)/(a), .5));
     	}
     	else
     	{
-    		Robot.drive.setRightSpeed(Math.min((sp + x*kp)/(a), .5));
-    		Robot.drive.setLeftSpeed(Math.max((sp - x*kp)/(a),0));
+    		x=Math.abs(x);
+    		Robot.drive.setRightSpeed(Math.min((sp + x*kp)/(a), .6));
+    		Robot.drive.setLeftSpeed(Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
         	
-    		SmartDashboard.putNumber("right speed",Math.min((sp + x*kp)/(a), .5));
-        	SmartDashboard.putNumber("left speed",Math.max((sp - x*kp)/(a),0));
+    		SmartDashboard.putNumber("right speed",Math.min((sp + x*kp)/(a), .6));
+        	SmartDashboard.putNumber("left speed",Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
     	}
     }
 
