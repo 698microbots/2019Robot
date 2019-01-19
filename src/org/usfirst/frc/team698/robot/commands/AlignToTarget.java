@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class AlignToTarget extends Command {
 
-	NetworkTableEntry tx,ty,ta;
+	NetworkTableEntry tx,ty,ta,tv;
 	double x,y,a;
-	double kp = 0.02;
-	double thresh = 5;
-	double sp_initial = .1;
-	double sp = 0.4;
+	double kp = SmartDashboard.getNumber("kp", .025);
+	double thresh = 1.8;
+	double sp_max = .5;
+	double sp = 0.3;
 	NetworkTableEntry light_state = Robot.limelight.getEntry("ledMode");
     public AlignToTarget() {
         // Use requires() here to declare subsystem dependencies
@@ -26,6 +26,7 @@ public class AlignToTarget extends Command {
     	tx = Robot.limelight.getEntry("tx");
     	ty = Robot.limelight.getEntry("ty");
     	ta = Robot.limelight.getEntry("ta");
+    	tv = Robot.limelight.getEntry("tv");
     }
 
     // Called just before this Command runs the first time
@@ -44,24 +45,25 @@ public class AlignToTarget extends Command {
     	x = tx.getDouble(0.0);
     	a = ta.getDouble(0.0);
     	
-    	if(x < 0)
+    	if(x > 0)
     	{
-    		x = Math.abs(x);
-    		Robot.drive.setRightSpeed(Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
-        	Robot.drive.setLeftSpeed(Math.min((sp + x*kp)/(a), .6));
+    		//x = Math.abs(x);
+    		Robot.drive.setRightSpeed(Math.max(((sp - x*kp)<sp_max?(sp - x*kp):sp_max)/(a),0));
+        	Robot.drive.setLeftSpeed(Math.min((sp + x*kp)/(a), sp_max));
         	
-        	SmartDashboard.putNumber("right speed",Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
-        	SmartDashboard.putNumber("left speed",Math.min((sp + x*kp)/(a), .5));
+        	SmartDashboard.putNumber("right speed",Math.max(((sp - x*kp)<sp_max?(sp - x*kp):sp_max)/(a),0));
+        	SmartDashboard.putNumber("left speed",Math.min((sp + x*kp)/(a), sp_max));
     	}
     	else
     	{
     		x=Math.abs(x);
-    		Robot.drive.setRightSpeed(Math.min((sp + x*kp)/(a), .6));
-    		Robot.drive.setLeftSpeed(Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
+    		Robot.drive.setRightSpeed(Math.min((sp + x*kp)/(a), sp_max));
+    		Robot.drive.setLeftSpeed(Math.max(((sp - x*kp)<sp_max?(sp - x*kp):sp_max)/(a),0));
         	
-    		SmartDashboard.putNumber("right speed",Math.min((sp + x*kp)/(a), .6));
-        	SmartDashboard.putNumber("left speed",Math.max(((sp - x*kp)<.6?(sp - x*kp):.6)/(a),0));
+    		SmartDashboard.putNumber("right speed",Math.min((sp + x*kp)/(a), sp_max));
+        	SmartDashboard.putNumber("left speed",Math.max(((sp - x*kp)<sp_max?(sp - x*kp):sp_max)/(a),0));
     	}
+    	SmartDashboard.putNumber("ta",a);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -78,7 +80,7 @@ public class AlignToTarget extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	light_state.setNumber(1);
+    	//light_state.setNumber(1);
     }
 
     // Called when another command which requires one or more of the same
