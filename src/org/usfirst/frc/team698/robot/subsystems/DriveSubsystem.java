@@ -30,7 +30,7 @@ public class DriveSubsystem extends Subsystem {
 	 * @param speed between -1 and 1
 	 */
 	public void setRightSpeed(double speed) {
-		//speed = -speed;
+		speed = -speed;
 		if(speed<-1) speed =-1;
 		if(speed>1) speed=1;
 		driveRightRearMotor.set(speed);

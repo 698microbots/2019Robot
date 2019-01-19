@@ -8,15 +8,13 @@
 package org.usfirst.frc.team698.robot;
 
 import org.usfirst.frc.team698.robot.commands.ExampleCommand;
-import org.usfirst.frc.team698.robot.subsystems.CargoIntakeSubsystem;
 import org.usfirst.frc.team698.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team698.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team698.robot.subsystems.HatchIntakeSubsystem;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -40,7 +38,7 @@ public class Robot extends TimedRobot {
 	public static Relay r = new Relay(0);
 	//public static CargoIntakeSubsystem cargoIntake = new CargoIntakeSubsystem();
 	public static NetworkTable limelight = NetworkTableInstance.getDefault().getTable("limelight");
-	//public static ADXRS450_Gyro gyro = new ADXRS450_Gyro(RobotMap.gyroPort);
+	public static AnalogGyro gyro = new AnalogGyro(RobotMap.gyroPort);
 
 
 	Command m_autonomousCommand;
